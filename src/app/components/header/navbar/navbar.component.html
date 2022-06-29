@@ -1,0 +1,27 @@
+
+<nav #NavbarAnimation class="w-100 navbar main-navbar fixed-top main-tool-bar justify-content-between navbar-expand-lg bg-light" role="navigation">
+  <div class="container justify-content-between">
+    <div class="navbar-header justify-content-between d-flex w-100">
+      <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+
+
+      <!-- LOGO -->
+      <!-- Text based logo -->
+       <a [routerLink]="['/']" class="navbar-brand aa-logo fake-h" href="#"> HEROES <span style="color: rgb(255, 130, 113);">by Kubide</span></a>
+       <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+        &#9776;
+      </button>
+    </div>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul id="top-menu" class="navbar-nav float-right aa-main-nav navi m-2">
+        <li class="active"><a appToScroll [routerLink]="['/']" (click)="isMenuCollapsed = !isMenuCollapsed">KUBIDE</a></li>
+        <li><a appToScroll [routerLink]="['/']" (click)="isMenuCollapsed = !isMenuCollapsed">KUBIDE</a></li>
+        <li><a appToScroll [routerLink]="['/']" (click)="isMenuCollapsed = !isMenuCollapsed">KUBIDE</a></li>
+        <li><a appToScroll [routerLink]="['/']" (click)="isMenuCollapsed = !isMenuCollapsed">KUBIDE</a></li>
+        <li><a appToScroll [routerLink]="['/KUBIDE']" rel="nofollow" (click)="isMenuCollapsed = !isMenuCollapsed">KUBIDE</a></li>
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<div class="scrollable-area"></div>

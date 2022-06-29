@@ -1,0 +1,26 @@
+<header #Altura style="height:100vh">
+  <!-- Top slider single slide -->
+  <div class="video-header">
+    <div class="w-100 h-100 fake-bg position-absolute" *ngIf='this.browserName === ("safari"); else normal'>
+    </div>
+    <ng-template #normal class="bg-dark">
+      <video #Altura2 class="fake-bg" loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+        <source src="https://firebasestorage.googleapis.com/v0/b/marvel-test-26a32.appspot.com/o/marvel%2Fmarvel.webm?alt=media&token=966dfed1-2dd1-4c95-be55-7b6a1b703d2d" type="video/webm">
+      </video>
+    </ng-template>
+      <div style="margin-top:15rem;">
+        <div class="text-effect justify-content-center d-flex">
+          <span #Title class="fake-h text-danger"></span>
+        </div>
+        <div class="col col-md-6 mx-auto">
+          <img class="logoimg w-100 h-100" *ngIf='this.browserName !== ("safari")' src="https://firebasestorage.googleapis.com/v0/b/marvel-test-26a32.appspot.com/o/marvel%2FMarvel_Logo.svg?alt=media&token=0a7c02b7-6a0e-4c98-8d86-ccad11e33e93" alt="Logo marvel kubide">
+        </div>
+        <div class="text-effect">
+          <span #Description class="subtext m-2 fake-h2">{{ title }}</span>
+        </div>
+      </div>
+  </div>
+      <!-- / Top slider single slide -->
+<app-navbar></app-navbar>
+</header>
+<div id="NavPosition"></div>

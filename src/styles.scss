@@ -1,1 +1,60 @@
+@import "~bootstrap/scss/bootstrap";
 /* You can add global styles to this file, and also import other style files */
+$base-color:#333;
+
+$base-font-size:16px;
+
+$base-font: 'Open Sans', sans-serif;
+
+$heading-font: 'Bebas Neue', cursive;
+
+$font-bold:700;
+
+$theme-color:#ffffff;
+
+$secondary-color:#a55825;
+
+h1,h2, .fake-title, .fake-h2 {
+	color: $theme-color !important;
+  font-family: $heading-font;
+  font-weight: bold;
+}
+.fake-h {
+  font-size: 1.3rem;
+  font-family: $heading-font;
+}
+strong {
+  color: $theme-color !important;
+}
+a {
+  font-family: $heading-font;
+	color: $theme-color !important;
+
+}
+h3 {
+  font-weight: bold;
+  font-size: 123%;
+}
+h4 {
+  font-weight: bold;
+  font-size: 1rem;
+}
+b {
+
+	color: $theme-color;
+}
+li{
+  list-style: none;
+}
+.over-size{
+  font-size: 4.5rem;
+}
+body{
+	background-color: #ffffff;
+	font-family: $base-font;
+	color:$base-color;
+	font-size:$base-font-size;
+	overflow-x: hidden;
+  font-weight: 700;
+  scroll-behavior: smooth;
+}
