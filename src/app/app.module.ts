@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { CoreComponent } from './components/core/core.component';
 import { CharactersComponent } from './components/core/characters/characters.component';
+import { DetailCharactComponent } from './components/core/detail-charact/detail-charact.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CharactersComponent } from './components/core/characters/characters.com
     FooterComponent,
     NavbarComponent,
     CoreComponent,
-    CharactersComponent
+    CharactersComponent,
+    DetailCharactComponent,
 
   ],
   imports: [

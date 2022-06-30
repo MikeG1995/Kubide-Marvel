@@ -31,6 +31,7 @@ export class CharactersComponent implements OnInit {
  //   private authService: AuthService,
  private characterSvc: ApiSvcService
   ) {}
+
   allCharacters!: Observable<any>;
 
   ngOnInit() {
