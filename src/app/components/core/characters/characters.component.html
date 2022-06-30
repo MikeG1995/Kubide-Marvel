@@ -1,0 +1,45 @@
+<!-- Latest property -->
+<section class="pb-5" my-5>
+  <div class="container-lg">
+    <div class="aa-latest-property-area">
+      <div class="aa-latest-properties-content">
+        <ul class="row w-100">
+              <ng-container  class="px-sm-0 ">
+                <li *ngFor="let Charact of allCharacters | async" class="col-md-4 ">
+              <article class="aa-properties-item">
+                <div class="propierties-pic"  style="overflow: hidden;">
+                  <a [routerLink]="['/']" style="display: flex; justify-content: center;" class="aa-properties-item-img">
+                    <img loading="lazy" src={{Charact.thumbnail.path}}.{{Charact.thumbnail.extension}} alt="kubide heroes selector">
+                  </a>
+                </div>
+                <h3 style="font-size: 1rem;">
+                  <div class="location">
+                    {{Charact.name}}
+                  </div>
+                </h3>
+                <div class="d-flex justify-content-center position-absolute">
+                  <button class="cybr-btn card-btn mx-2">
+                    Añadir<span aria-hidden></span>
+                    <span aria-hidden class="cybr-btn__glitch">Héroe</span>
+                    <span aria-hidden class="cybr-btn__tag">Kubide</span>
+                  </button>
+                  <button class="cybr-btn card-btn mx-2">
+                    Detalles<span aria-hidden></span>
+                    <span aria-hidden class="cybr-btn__glitch">Detalles_</span>
+                    <span aria-hidden class="cybr-btn__tag">Kubide</span>
+                  </button>
+                </div>
+              </article>
+              </li>
+              </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <a type="button" appToScroll [routerLink]="['/']" class="btn btn-dark w-100 p-3">
+      <b style="font-size: x-large;">VER MAS</b>
+    </a>
+  </div>
+  </section>
+<!-- / Latest property -->

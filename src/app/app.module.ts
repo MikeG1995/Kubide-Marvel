@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/header/navbar/navbar.component';
 import { CoreComponent } from './components/core/core.component';
+import { CharactersComponent } from './components/core/characters/characters.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { CoreComponent } from './components/core/core.component';
     HeaderComponent,
     FooterComponent,
     NavbarComponent,
-    CoreComponent
+    CoreComponent,
+    CharactersComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
 
   ],
   providers: [],
