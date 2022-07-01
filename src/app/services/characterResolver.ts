@@ -11,7 +11,7 @@ export class CharacterResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
 
-    const id = route.paramMap.get("characterSelected")
+    const id = route.paramMap.get("id")
     return this.character.getCharacter(id)
   }
 }

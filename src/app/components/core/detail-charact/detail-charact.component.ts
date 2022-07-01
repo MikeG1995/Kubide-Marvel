@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detail-charact',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailCharactComponent implements OnInit {
 
-  constructor() { }
+  characterId: any;
+  character$: Observable<any>;
+
+  constructor(private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
+    this.characterId = this.route.snapshot.data["characterId"]
+    console.log(this.characterId)
   }
 
 }
