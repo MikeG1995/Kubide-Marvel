@@ -1,19 +1,68 @@
-<div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
   <article>
-    <ul class="row">
+    <ul class="row" *ngIf="(characterId$ | async ) as characterId">
       <li class="col">
-        <img src="http://i.annihil.us/u/prod/marvel/i/mg/9/50/4ce18691cbf04.jpg" alt="Marvel Heroe">
+        <img class="img-hero" src={{characterId.thumbnail.path}}.{{characterId.thumbnail.extension}} alt="Marvel Heroe">
       </li>
       <li class="col">
-        <h3>SpiderMan</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora aliquid quia architecto. Aperiam ipsam dolorum neque illum delectus saepe accusantium quos deleniti totam vero dolores voluptate ducimus explicabo impedit voluptatem perspiciatis eos nisi ut, suscipit amet ratione! A minima illo nisi voluptatibus fugiat velit odio ab! Accusamus asperiores temporibus voluptates earum molestias possimus, esse ad adipisci quos sed, inventore voluptatum eius ullam debitis consectetur voluptas iusto molestiae expedita cupiditate, voluptatibus deserunt! Voluptatum quas esse doloremque accusantium quam tempora aperiam quasi atque minus ut aspernatur iusto praesentium tempore nam temporibus eligendi officiis mollitia iste, at repellendus error. Est doloremque id expedita, maiores incidunt, possimus sed ratione eveniet ullam temporibus asperiores totam. Minima expedita deserunt est natus debitis eveniet facere vel blanditiis, atque porro laudantium incidunt distinctio, eos voluptatem? Dolorem voluptatum saepe aperiam a, architecto quia non sint esse quo! Ipsa tempore laudantium architecto non ullam accusantium molestias fugiat dolore error, repellendus doloremque debitis aliquid ex nostrum iusto nisi veritatis ducimus est excepturi sint vero. Suscipit, deleniti atque delectus consequatur officia incidunt a nisi praesentium recusandae expedita quis ipsa aliquid, placeat eum magni magnam eligendi, odit possimus. Sint officiis, ducimus consequatur in tempora culpa obcaecati officia cupiditate doloribus quo asperiores tenetur!</p>
-        <div class="d-flex justify-content-center position-absolute">
+        <div>
+
+          <h2><span  class="hero-titles name">{{characterId.name}}</span></h2>
+        </div>
+        <div>
+          <span class="fake-h2 hero-titles description">Descripción del Sujeto</span>
+          <p style="min-height: 25vh;max-height: 25vh;" class="overflow-auto">{{characterId.description}}</p>
+        </div>
+        <div>
+          <span class="fake-h2 hero-titles info">Más información</span>
+        </div>
+        <div>
+            <div style="min-height: 25vh;max-height: 25vh;" class="overflow-auto">
+              <span class="fake-h hero-titles comics">
+                Comics
+              </span>
+              <p >
+                Número de comics donde aparece: {{characterId.comics.available}}
+              </p>
+              <p >
+                Primera aparicion en: {{characterId.comics.items[0].name}}
+              </p>
+              <span class="fake-h hero-titles film">
+                Series y eventos
+              </span>
+              <p >
+                Número de series donde aparece: {{characterId.series.available}}
+              </p>
+              <p >
+                Primera aparicion en: {{characterId.series.items[0].name}}
+              </p>
+              <p >
+                Número de eventos donde aparece: {{characterId.events.available}}
+              </p>
+              <p >
+                Primera aparicion en: {{characterId.events.items[0].name}}
+              </p>
+
+            </div>
+        </div>
+        <div style="justify-content: flex-end" class="d-flex">
           <button class="cybr-btn card-btn mx-2"[routerLink]="">
             Añadir<span aria-hidden></span>
             <span aria-hidden class="cybr-btn__glitch">Héroe</span>
             <span aria-hidden class="cybr-btn__tag">Kubide</span>
           </button>
-          <button class="cybr-btn card-btn mx-2"[routerLink]="['../']">
+          <button class="cybr-btn card-btn mx-2"[routerLink]="['../..']">
             Volver<span aria-hidden></span>
             <span aria-hidden class="cybr-btn__glitch">_Back_</span>
             <span aria-hidden class="cybr-btn__tag">Kubide</span>

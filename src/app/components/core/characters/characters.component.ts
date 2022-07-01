@@ -14,14 +14,19 @@ export class CharactersComponent implements OnInit {
  private characterSvc: ApiSvcService
   ) {}
 
-  allCharacters!: Observable<any>;
+  allCharacters$: Observable<any>;
 
   ngOnInit() {
+
+
   this.getCharacters();
     console.log(this.getCharacters())
   }
+
+
+
   getCharacters() {
-    this.allCharacters = this.characterSvc.getAllCharacters();
+    this.allCharacters$ = this.characterSvc.getAllCharacters();
   }
 
 }

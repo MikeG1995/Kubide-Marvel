@@ -1,0 +1,26 @@
+.img-hero{
+  max-width: 85vh;
+clip-path: polygon(0% 0%, 82% 0%, 100% 100%, 18% 100%);
+min-width: 85vh;
+}
+.hero-titles {
+  padding: 0px 4px;
+  font-size: 1.5rem;
+}
+.name{
+  background-color: #d8272d;
+  font-size: 2rem;
+
+}
+.description{
+  background-color: #27b5d8;
+}
+.info{
+  background-color: #1dc033;
+}
+.comics{
+  background-color: #cf8700;
+}
+.film{
+  background-color: #c01daa;
+}

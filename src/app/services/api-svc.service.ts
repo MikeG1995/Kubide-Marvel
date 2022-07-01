@@ -18,9 +18,15 @@ export class ApiSvcService {
     return this.http.get<any>(this.API + `characters?orderBy=name&ts=1&apikey=${this.publicKey}&hash=${this.hash}`)
     .pipe(map((data: any) => data.data.results))
   }
+
+
   getCharacter(id:string): Observable<any> {
-    return this.http.get<any>(`https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=${this.publicKey}&hash=${this.hash}`)
-    .pipe(map((data: any) => data.data.results))
+    return this.http.get<any>(`https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=${this.publicKey}&hash=${this.hash}`, {
+      params: {
+        id
+      }
+    }).pipe(map((data: any) => data.data.results["0"]))
+
   }
 
 }

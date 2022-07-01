@@ -9,14 +9,14 @@ import { map, Observable } from 'rxjs';
 })
 export class DetailCharactComponent implements OnInit {
 
-  characterId: any;
+  characterId$: Observable<any>;
   character$: Observable<any>;
 
   constructor(private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
-    this.characterId = this.route.snapshot.data["characterId"]
-    console.log(this.characterId)
+    this.characterId$ = this.route.data.pipe(map(data=> data["characterId"]))
+    console.log(this.characterId$)
   }
 
 }

@@ -5,18 +5,18 @@
       <div class="aa-latest-properties-content">
         <ul class="row w-100">
               <ng-container  class="px-sm-0 ">
-                <li *ngFor="let Charact of allCharacters | async" class="col-md-4 ">
+                <li *ngFor="let Charact of allCharacters$ | async" class="col-md-4 ">
               <article class="aa-properties-item">
                 <div class="propierties-pic"  style="overflow: hidden;">
                   <a [routerLink]="['/']" style="display: flex; justify-content: center;" class="aa-properties-item-img">
                     <img loading="lazy" src={{Charact.thumbnail.path}}.{{Charact.thumbnail.extension}} alt="kubide heroes selector">
                   </a>
                 </div>
-                <h3 style="font-size: 1rem;">
+                <h2 style="font-size: 1rem;">
                   <div class="location">
                     {{Charact.name}}
                   </div>
-                </h3>
+                </h2>
                 <div class="d-flex justify-content-center position-absolute">
                   <button class="cybr-btn card-btn mx-2" [routerLink]="[]">
                     Añadir<span aria-hidden></span>
