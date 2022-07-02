@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharactersComponent } from './components/core/characters/characters.component';
 import { CoreComponent } from './components/core/core.component';
 import { DetailCharactComponent } from './components/core/detail-charact/detail-charact.component';
+import { SearchComponent } from './components/core/search/search.component';
 import { CharacterResolver } from './services/characterResolver';
+import { searchResolver } from './services/searchResolver';
 const routes: Routes = [
     { path:'',component: CoreComponent, children: [
       {
@@ -16,6 +18,13 @@ const routes: Routes = [
         resolve: {
           characterId: CharacterResolver
         }
+      },
+      {
+        path:"search/:search",
+        component: SearchComponent,
+        resolve: {
+          search: searchResolver
+        }
       }
     ]},
 ];
@@ -24,7 +33,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    CharacterResolver
+    CharacterResolver,
+    searchResolver
   ]
 })
 export class AppRoutingModule { }

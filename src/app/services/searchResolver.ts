@@ -6,13 +6,13 @@ import { ApiSvcService } from "./api-svc.service";
 
 
 @Injectable()
-export class CharacterResolver implements Resolve<any> {
+export class searchResolver implements Resolve<any> {
 
   constructor( private character: ApiSvcService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<hero> {
 
-    const id = route.paramMap.get("id")
-    return this.character.getCharacter(id)
+    const search = route.paramMap.get("search")
+    return this.character.getCharacterByName(search)
   }
 }

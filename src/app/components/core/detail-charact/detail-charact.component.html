@@ -8,68 +8,69 @@
 
 
 
+<div class=" bg-light">
+  <div class="container">
+    <article>
+      <ul class="row" *ngIf="(characterId$ | async ) as characterId">
+        <li class="col">
+          <img class="img-hero" src={{characterId.thumbnail.path}}.{{characterId.thumbnail.extension}} alt="Marvel Heroe">
+        </li>
+        <li class="col">
+          <div>
 
-<div class="container">
-  <article>
-    <ul class="row" *ngIf="(characterId$ | async ) as characterId">
-      <li class="col">
-        <img class="img-hero" src={{characterId.thumbnail.path}}.{{characterId.thumbnail.extension}} alt="Marvel Heroe">
-      </li>
-      <li class="col">
-        <div>
+            <h2><span  class="hero-titles name">{{characterId.name}}</span></h2>
+          </div>
+          <div>
+            <span class="fake-h2 hero-titles description">Descripción del Sujeto</span>
+            <p style="min-height: 25vh;max-height: 25vh;" class="overflow-auto">{{characterId.description}}</p>
+          </div>
+          <div>
+            <span class="fake-h2 hero-titles info">Más información</span>
+          </div>
+          <div>
+              <div style="min-height: 26vh;max-height: 26vh;" class="overflow-auto">
+                <span class="fake-h hero-titles comics">
+                  Comics
+                </span>
+                <p >
+                  Número de comics donde aparece: {{characterId.comics.available}}
+                </p>
+                <p >
+                  Primera aparicion en: {{characterId.comics.items[0].name}}
+                </p>
+                <span class="fake-h hero-titles film">
+                  Series y eventos
+                </span>
+                <p >
+                  Número de series donde aparece: {{characterId.series.available}}
+                </p>
+                <p >
+                  Primera aparicion en: {{characterId.series.items[0].name}}
+                </p>
+                <p >
+                  Número de historias donde aparece: {{characterId.stories.available}}
+                </p>
+                <p >
+                  Primera aparicion en: {{characterId.stories.items[0].name}}
+                </p>
 
-          <h2><span  class="hero-titles name">{{characterId.name}}</span></h2>
-        </div>
-        <div>
-          <span class="fake-h2 hero-titles description">Descripción del Sujeto</span>
-          <p style="min-height: 25vh;max-height: 25vh;" class="overflow-auto">{{characterId.description}}</p>
-        </div>
-        <div>
-          <span class="fake-h2 hero-titles info">Más información</span>
-        </div>
-        <div>
-            <div style="min-height: 25vh;max-height: 25vh;" class="overflow-auto">
-              <span class="fake-h hero-titles comics">
-                Comics
-              </span>
-              <p >
-                Número de comics donde aparece: {{characterId.comics.available}}
-              </p>
-              <p >
-                Primera aparicion en: {{characterId.comics.items[0].name}}
-              </p>
-              <span class="fake-h hero-titles film">
-                Series y eventos
-              </span>
-              <p >
-                Número de series donde aparece: {{characterId.series.available}}
-              </p>
-              <p >
-                Primera aparicion en: {{characterId.series.items[0].name}}
-              </p>
-              <p >
-                Número de eventos donde aparece: {{characterId.events.available}}
-              </p>
-              <p >
-                Primera aparicion en: {{characterId.events.items[0].name}}
-              </p>
+              </div>
+          </div>
+          <div style="justify-content: flex-end" class="d-flex">
+            <button class="cybr-btn card-btn mx-2"[routerLink]="">
+              Añadir<span aria-hidden></span>
+              <span aria-hidden class="cybr-btn__glitch">Héroe</span>
+              <span aria-hidden class="cybr-btn__tag">Kubide</span>
+            </button>
+            <button class="cybr-btn card-btn mx-2"[routerLink]="['../..']">
+              Volver<span aria-hidden></span>
+              <span aria-hidden class="cybr-btn__glitch">_Back_</span>
+              <span aria-hidden class="cybr-btn__tag">Kubide</span>
+            </button>
+          </div>
 
-            </div>
-        </div>
-        <div style="justify-content: flex-end" class="d-flex">
-          <button class="cybr-btn card-btn mx-2"[routerLink]="">
-            Añadir<span aria-hidden></span>
-            <span aria-hidden class="cybr-btn__glitch">Héroe</span>
-            <span aria-hidden class="cybr-btn__tag">Kubide</span>
-          </button>
-          <button class="cybr-btn card-btn mx-2"[routerLink]="['../..']">
-            Volver<span aria-hidden></span>
-            <span aria-hidden class="cybr-btn__glitch">_Back_</span>
-            <span aria-hidden class="cybr-btn__tag">Kubide</span>
-          </button>
-        </div>
-
-      </li>
-    </ul>
-  </article>
+        </li>
+      </ul>
+    </article>
+  </div>
 </div>

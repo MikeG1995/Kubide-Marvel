@@ -8,27 +8,29 @@
                 <li *ngFor="let Charact of allCharacters$ | async" class="col-md-4 ">
               <article class="aa-properties-item">
                 <div class="propierties-pic"  style="overflow: hidden;">
-                  <a [routerLink]="['/']" style="display: flex; justify-content: center;" class="aa-properties-item-img">
+                  <a (click)="onSelect(Charact.id)" style="display: flex; justify-content: center;" class="aa-properties-item-img">
                     <img loading="lazy" src={{Charact.thumbnail.path}}.{{Charact.thumbnail.extension}} alt="kubide heroes selector">
                   </a>
+
                 </div>
-                <h2 style="font-size: 1rem;">
-                  <div class="location">
-                    {{Charact.name}}
-                  </div>
-                </h2>
-                <div class="d-flex justify-content-center position-absolute">
+                <div class="position-absolute" style="right: 2px;">
                   <button class="cybr-btn card-btn mx-2" [routerLink]="[]">
                     Añadir<span aria-hidden></span>
                     <span aria-hidden class="cybr-btn__glitch">Héroe</span>
                     <span aria-hidden class="cybr-btn__tag">Kubide</span>
                   </button>
-                  <button class="cybr-btn card-btn mx-2" [routerLink]="[ 'character/', Charact.id]">
+                  <button class="cybr-btn card-btn mx-2" (click)="onSelect(Charact.id)">
                     Detalles<span aria-hidden></span>
                     <span aria-hidden class="cybr-btn__glitch">Detalles_</span>
                     <span aria-hidden class="cybr-btn__tag">Kubide</span>
                   </button>
                 </div>
+
+                <h2 style="font-size: 1rem;">
+                  <div class="location">
+                    {{Charact.name}}
+                  </div>
+                </h2>
               </article>
               </li>
               </ng-container>

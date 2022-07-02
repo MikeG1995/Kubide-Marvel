@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { filter, map, Observable, pairwise } from 'rxjs';
+import { hero } from 'src/app/models/hero';
 
 @Component({
   selector: 'app-detail-charact',
@@ -9,14 +10,10 @@ import { map, Observable } from 'rxjs';
 })
 export class DetailCharactComponent implements OnInit {
 
-  characterId$: Observable<any>;
-  character$: Observable<any>;
-
+  characterId$: Observable<hero>;
   constructor(private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.characterId$ = this.route.data.pipe(map(data=> data["characterId"]))
-    console.log(this.characterId$)
   }
-
 }

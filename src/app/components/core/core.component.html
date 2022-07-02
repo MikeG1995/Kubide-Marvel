@@ -1,25 +1,38 @@
 
+<div class="login-reg-panel ">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="white-panel col-md-6 col-sm-8">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde vitae at, aliquam sapiente commodi voluptate odio tempore repellendus consequatur. Eos maxime a ad laborum necessitatibus expedita, nulla hic veritatis iste ex aperiam nemo molestias illum, voluptatem, esse saepe provident! Fugiat adipisci rem maxime error odio cumque totam id consequuntur nesciunt sed minima facilis optio sapiente et nam, molestias dolores harum beatae corporis repudiandae quia hic. Aliquam, fuga ab tempore perspiciatis quasi totam sunt provident pariatur illo temporibus, sed repellendus mollitia assumenda neque! Eligendi quae mollitia possimus totam iure, voluptas eos quaerat autem suscipit necessitatibus est unde dignissimos debitis quasi molestias!</p>
+      </div>
+      <div class="col-md-6 col-sm-8">
+        <div class="my-4">
+          <img class="w-50" src="https://firebasestorage.googleapis.com/v0/b/marvel-test-26a32.appspot.com/o/marvel%2FMarvel_Logo.svg?alt=media&token=0a7c02b7-6a0e-4c98-8d86-ccad11e33e93" alt="">
+        </div>
+        <label>
+          <input type="text" id="search" required name="search" [(ngModel)]="searchText"  autocomplete="off" (keyup.enter)="updateSearch()">
+          <ul>
+            <li b>b</li>
+            <li u>u</li>
+            <li s>s</li>
+            <li c>c</li>
+            <li a>a</li>
+            <li r>r</li>
+          </ul>
+          </label>
+          <div>
+            <button class="cybr-btn card-btn mx-2" (click)="updateSearch()">
+              Filtrar en base de datos<span aria-hidden></span>
+              <span aria-hidden class="cybr-btn__glitch">Filtrar</span>
+              <span aria-hidden class="cybr-btn__tag">Kubide</span>
+            </button>
 
+          </div>
+      </div>
 
+    </div>
 
-
-
-<app-detail-charact></app-detail-charact>
-
-
-
-
-
-
-
-
-
-
-
-<div class="login-reg-panel">
-
-  <div class="white-panel">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde vitae at, aliquam sapiente commodi voluptate odio tempore repellendus consequatur. Eos maxime a ad laborum necessitatibus expedita, nulla hic veritatis iste ex aperiam nemo molestias illum, voluptatem, esse saepe provident! Fugiat adipisci rem maxime error odio cumque totam id consequuntur nesciunt sed minima facilis optio sapiente et nam, molestias dolores harum beatae corporis repudiandae quia hic. Aliquam, fuga ab tempore perspiciatis quasi totam sunt provident pariatur illo temporibus, sed repellendus mollitia assumenda neque! Eligendi quae mollitia possimus totam iure, voluptas eos quaerat autem suscipit necessitatibus est unde dignissimos debitis quasi molestias!</p>
   </div>
 </div>
+
 <router-outlet></router-outlet>
