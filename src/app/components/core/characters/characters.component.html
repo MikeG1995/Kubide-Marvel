@@ -1,11 +1,11 @@
 <!-- Latest property -->
-<section class="pb-5" my-5>
+<section style="min-height: 100vh;" my-5>
   <div class="container-lg">
     <div class="aa-latest-property-area">
       <div class="aa-latest-properties-content">
         <ul class="row w-100">
               <ng-container  class="px-sm-0 ">
-                <li *ngFor="let Charact of allCharacters$ | async" class="col-md-4 ">
+                <li *ngFor="let Charact of allCharacters$ | async " class="col-md-4 " let page=0>
               <article class="aa-properties-item">
                 <div class="propierties-pic"  style="overflow: hidden;">
                   <a (click)="onSelect(Charact.id)" style="display: flex; justify-content: center;" class="aa-properties-item-img">
@@ -36,12 +36,16 @@
               </ng-container>
         </ul>
       </div>
+      <div class="container row">
+        <button type="button" appToScroll (click)="prev()" class="btn btn-dark w-100 p-3 col m-2">
+          <b style="font-size: x-large;">ANTERIOR</b>
+        </button>
+        <button type="button" appToScroll (click)="next()" class="btn btn-danger w-100 p-3 col m-2">
+          <b style="font-size: x-large;">VER MAS</b>
+        </button>
+      </div>
+
     </div>
-  </div>
-  <div class="container">
-    <a type="button" appToScroll [routerLink]="['/']" class="btn btn-dark w-100 p-3">
-      <b style="font-size: x-large;">VER MAS</b>
-    </a>
   </div>
   </section>
 <!-- / Latest property -->

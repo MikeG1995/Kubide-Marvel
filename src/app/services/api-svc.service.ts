@@ -15,12 +15,21 @@ export class ApiSvcService {
 
   constructor(private http: HttpClient) { }
 
+  getAllCharactersPage(page): Observable<hero> {
+    return this.http.get<any>(this.API + `characters?&ts=1&apikey=${this.publicKey}&hash=${this.hash}`,{
+      params:{
+        orderBy:"name",
+        limit:"9",
+        offset: page
+      }
+    })
+    .pipe(map((data: any) => data.data.results), shareReplay())
+  }
   getAllCharacters(): Observable<hero> {
     return this.http.get<any>(this.API + `characters?&ts=1&apikey=${this.publicKey}&hash=${this.hash}`,{
       params:{
         orderBy:"name",
         limit:"15",
-
       }
     })
     .pipe(map((data: any) => data.data.results), shareReplay())

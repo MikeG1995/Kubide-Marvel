@@ -17,17 +17,29 @@ export class CharactersComponent implements OnInit {
   ) {}
 
   allCharacters$: Observable<any>;
+  public page:number = 0;
 
   ngOnInit() {
-  this.getCharacters();
+  this.getAllCharactersPage(this.page);
   }
 
   onSelect(charact:string){
     this.router.navigate(['character/', charact]);
   }
 
-  getCharacters() {
-    this.allCharacters$ = this.characterSvc.getAllCharacters();
+  getAllCharactersPage(page) {
+    this.allCharacters$ = this.characterSvc.getAllCharactersPage(page);
+  }
+  next() {
+    console.log("next");
+    this.getAllCharactersPage(this.page += 9)
+
+  }
+   prev() {
+    console.log("prev");
+    if (this.page > 0) this.getAllCharactersPage(this.page -= 9)
+    }
+
   }
 
-}
+
