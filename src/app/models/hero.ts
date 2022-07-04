@@ -9,21 +9,21 @@ export interface hero {
   };
   comics?: {
     available: number;
-    items?:[{
-      name?:string | undefined
-    } | undefined] | undefined
-  } | undefined;
+    items:[{
+      name:string | undefined
+    }?]
+  };
   series?: {
     available: number;
     items:[{
-      name?:string
-    }]
+      name:string
+    }?]
   };
   stories?: {
     available: number;
     items:[{
-      name?:string
-    }]
+      name:string
+    }?]
   }
 }
 
