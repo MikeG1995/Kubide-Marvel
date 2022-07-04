@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map, Observable } from 'rxjs';
-import { SharedService } from 'src/app/services/shared-service';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +15,7 @@ export class SearchComponent implements OnInit {
 
 
   constructor(
-    private _sharedService: SharedService, private route: ActivatedRoute, private router:Router,    private modalService: NgbModal
+    private route: ActivatedRoute, private router:Router,    private modalService: NgbModal
 
      ) {}
 
@@ -29,18 +28,16 @@ export class SearchComponent implements OnInit {
     next() {
 
     }
+    prev() {
+
+    }
+
     selectedHerosMenu(){
       this.modalService.open(this.cookieWindow)
     }
 
-    gcook() {
-      this.modalService.dismissAll(this.cookieWindow);
-    }
     cambiar(clickdata) {
       console.log(clickdata)
-    }
-       prev() {
-
     }
 
       onSelect(charact:string){

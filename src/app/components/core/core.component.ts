@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { SharedService } from 'src/app/services/shared-service';
@@ -15,7 +15,7 @@ export class CoreComponent implements OnInit {
   closeResult = '';
   @ViewChild ('cookieWindow', { static: true }) public cookieWindow: any;
 
-  constructor( private router: Router,private moldalAlert: NgbToast, public toastService: ToastService, private _sharedService: SharedService,
+  constructor( private router: Router, public toastService: ToastService,  _sharedService: SharedService,
     private modalService: NgbModal
     ) {
     _sharedService.changeEmitted$.subscribe(text => {
@@ -44,7 +44,6 @@ export class CoreComponent implements OnInit {
   updateSearch() {
     console.log(this.searchText);
     this.router.navigate(['search/', this.searchText]);
-
   }
 
   selectedHerosMenu(){
@@ -62,7 +61,7 @@ export class CoreComponent implements OnInit {
     this.modalService.dismissAll(this.cookieWindow);
     this.heroTeam.length = 0;
   }
-  gcook() {
+  windowTeam() {
     this.modalService.dismissAll(this.cookieWindow);
   }
 

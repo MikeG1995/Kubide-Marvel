@@ -21,7 +21,7 @@
             <h2><span  class="hero-titles name">{{characterId.name}}</span></h2>
           </div>
           <div>
-            <span class="fake-h2 hero-titles description">Descripción del Sujeto</span>
+            <span class="fake-h2 hero-titles description">Descripción del Sujeto conocida</span>
             <p style="min-height: 25vh;max-height: 25vh;" class="overflow-auto">{{characterId.description}}</p>
           </div>
           <div>
@@ -36,7 +36,7 @@
                   Número de comics donde aparece: {{characterId.comics.available}}
                 </p>
                 <p >
-                  Primera aparicion en: {{characterId.comics.items[0].name}}
+                  Primera aparicion en: {{characterId.comics.items[0]?.name}}
                 </p>
                 <span class="fake-h hero-titles film">
                   Series y eventos
@@ -45,13 +45,13 @@
                   Número de series donde aparece: {{characterId.series.available}}
                 </p>
                 <p >
-                  Primera aparicion en: {{characterId.series.items[0].name}}
+                  Primera aparicion en: {{characterId.series.items[0]?.name}}
                 </p>
                 <p >
                   Número de historias donde aparece: {{characterId.stories.available}}
                 </p>
                 <p >
-                  Primera aparicion en: {{characterId.stories.items[0].name}}
+                  Primera aparicion en: {{characterId.stories.items[0]?.name}}
                 </p>
 
               </div>
