@@ -1,9 +1,18 @@
 
+  <ngb-toast class="sticky-top toast"
+  *ngIf="mostrar"
+  header="Titulo del Toast"
+
+  [autohide]="false"
+  (hide)="mostrar=false">
+  Ya has completado el máximo de 6 Super Héroes seleccionados.
+  </ngb-toast>
+
 <div class="login-reg-panel ">
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="white-panel col-md-6 col-sm-8">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde vitae at, aliquam sapiente commodi voluptate odio tempore repellendus consequatur. Eos maxime a ad laborum necessitatibus expedita, nulla hic veritatis iste ex aperiam nemo molestias illum, voluptatem, esse saepe provident! Fugiat adipisci rem maxime error odio cumque totam id consequuntur nesciunt sed minima facilis optio sapiente et nam, molestias dolores harum beatae corporis repudiandae quia hic. Aliquam, fuga ab tempore perspiciatis quasi totam sunt provident pariatur illo temporibus, sed repellendus mollitia assumenda neque! Eligendi quae mollitia possimus totam iure, voluptas eos quaerat autem suscipit necessitatibus est unde dignissimos debitis quasi molestias!</p>
+        <p class="p-3">Para buscar a tu héroe favorito simplemente busca su nombre o al menos sus letras iniciales para filtrarlo, no olvides pulsar el boton de buscar</p>
       </div>
       <div class="col-md-6 col-sm-8">
         <div class="my-4">
@@ -35,4 +44,24 @@
   </div>
 </div>
 
+<ng-template #cookieWindow let-modal >
+  <div class="wrapper" >
+
+    <div class="content">
+      <div><p>Los ID de tus heroes son: {{heroTeam}}.</p></div>
+      <div>
+        <button (click)="listHeros_localStorage()">guardar</button>
+        <button (click)="clear()">borrar</button>
+      </div>
+          <button class="item w-100" style="height:6rem" (click)="gcook()">Volver</button>
+        </div>
+      </div>
+</ng-template>
+
 <router-outlet></router-outlet>
+<div class="container">
+  <a type="button" appToScroll (click)="selectedHerosMenu()" class="btn btn-dark w-100 p-3">
+    <b style="font-size: x-large;">MI EQUIPO</b>
+  </a>
+</div>
+

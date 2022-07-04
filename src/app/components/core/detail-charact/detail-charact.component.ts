@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { filter, map, Observable, pairwise } from 'rxjs';
 import { hero } from 'src/app/models/hero';
+import { SharedService } from 'src/app/services/shared-service';
 
 @Component({
   selector: 'app-detail-charact',
@@ -11,9 +12,16 @@ import { hero } from 'src/app/models/hero';
 export class DetailCharactComponent implements OnInit {
 
   characterId$: Observable<hero>;
-  constructor(private route: ActivatedRoute, private router:Router) { }
+  constructor(private route: ActivatedRoute, private _sharedService: SharedService) { }
+  @Output() cambio = new EventEmitter();
+
 
   ngOnInit(): void {
     this.characterId$ = this.route.data.pipe(map(data=> data["characterId"]))
   }
+  cambiar(clickdata) {
+    console.log(clickdata);
+    this._sharedService.emitChange(clickdata);
+  }
+
 }

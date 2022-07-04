@@ -15,6 +15,7 @@ import { SearchComponent } from './components/core/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { ApiSvcService } from './services/api-svc.service';
+import { ToastsContainer } from './services/toast/toast-container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,9 @@ import { ApiSvcService } from './services/api-svc.service';
     CoreComponent,
     CharactersComponent,
     DetailCharactComponent,
-    SearchComponent
+    SearchComponent,
+    ToastsContainer
+
   ],
   imports: [
     BrowserModule,
