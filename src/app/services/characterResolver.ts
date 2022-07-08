@@ -12,7 +12,9 @@ export class CharacterResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<hero> {
 
-    const id = route.paramMap.get("id")
+    const id = route.paramMap.get("id");
+    console.log(id)
+    console.log(this.character.getCharacter(id));
     return this.character.getCharacter(id)
   }
 }

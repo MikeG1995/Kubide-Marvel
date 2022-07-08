@@ -1,5 +1,5 @@
 
-import { Component, EventEmitter, OnInit, Output, ViewChild } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { ApiSvcService } from "src/app/services/api-svc.service";
@@ -23,14 +23,11 @@ export class CharactersComponent implements OnInit {
 
   closeModal: string;
 
-  onClick() {
-    this._sharedService.emitChange("Data from child");
-}
   allCharacters$: Observable<any>;
   public page:number = 0;
 
   ngOnInit() {
-  this.getAllCharactersPage(this.page);
+    this.getAllCharactersPage(this.page);
   }
   cambiar(clickdata) {
     console.log(clickdata);
@@ -39,14 +36,14 @@ export class CharactersComponent implements OnInit {
   onSelect(charact:string){
     this.router.navigate(['character/', charact]);
   }
-
   getAllCharactersPage(page) {
     this.allCharacters$ = this.characterSvc.getAllCharactersPage(page);
+    console.log(this.allCharacters$);
+    this.allCharacters$.subscribe(data => { console.log(data)})
   }
   next() {
     console.log("next");
     this.getAllCharactersPage(this.page += 9)
-
   }
    prev() {
     console.log("prev");

@@ -11,19 +11,19 @@ export interface hero {
     available: number;
     items:[{
       name:string | undefined
-    }?]
+    }]
   };
   series?: {
     available: number;
     items:[{
       name:string
-    }?]
+    }]
   };
   stories?: {
     available: number;
     items:[{
       name:string
-    }?]
+    }]
   }
 }
 

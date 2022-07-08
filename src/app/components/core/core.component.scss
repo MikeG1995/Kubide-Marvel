@@ -62,7 +62,7 @@ input{
 label{
   position: relative;
 }
-ul{
+.list {
   position: absolute;
   top: 38px;
   left: -4px;
@@ -118,4 +118,38 @@ ul{
   position: fixed;
 margin: 4rem;
 right: 1px;
+}
+.special-btn {
+  font-size: 1.3rem;
+  height: 2rem;
+}
+.modal-dialog {
+  max-width: 90%;
+  margin: 1.75rem auto;
+}
+.teamCard {
+  background-color:rgba(255, 255, 255, 0.699);
+  max-height: 73vh;
+  min-height: 40vh;
+  text-align:center;
+  overflow: hidden;
+}
+
+.light-blue-backdrop {
+  background-color: rgba(0, 0, 0, 0.781);
+}
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.308);
+  color: rgb(43, 43, 43);
+}
+.modal-header {
+  background-color: red;
+}
+.modal-body {
+  background-color: green;
+}
+.btn-cardTeam {
+  text-align: center;
+  top: -13px;
+  position: relative;
 }

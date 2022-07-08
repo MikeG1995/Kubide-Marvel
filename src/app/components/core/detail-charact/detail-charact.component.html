@@ -12,7 +12,7 @@
   <div class="container">
     <article>
       <ul class="row" *ngIf="(characterId$ | async ) as characterId">
-        <li class="col">
+        <li class="col-sm">
           <img class="img-hero" src={{characterId.thumbnail.path}}.{{characterId.thumbnail.extension}} alt="Marvel Heroe">
         </li>
         <li class="col">
@@ -22,10 +22,10 @@
           </div>
           <div>
             <span class="fake-h2 hero-titles description">Descripción del Sujeto conocida</span>
-            <p style="min-height: 25vh;max-height: 25vh;" class="overflow-auto">{{characterId.description}}</p>
+            <p style="max-height: 25vh;" class="overflow-auto">{{characterId.description}}</p>
           </div>
           <div>
-            <span class="fake-h2 hero-titles info">Más información</span>
+            <span class="fake-h2 hero-titles info">información</span>
           </div>
           <div>
               <div style="min-height: 26vh;max-height: 26vh;" class="overflow-auto">

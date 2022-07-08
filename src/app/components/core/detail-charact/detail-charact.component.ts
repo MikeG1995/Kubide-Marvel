@@ -17,7 +17,9 @@ export class DetailCharactComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.characterId$ = this.route.data.pipe(map(data=> data["characterId"]))
+    this.characterId$ = this.route.data.pipe(map(data=> data["characterId"]));
+    this.characterId$.subscribe(data=> {console.log(data)});
+
   }
   cambiar(clickdata) {
     console.log(clickdata);

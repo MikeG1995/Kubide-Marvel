@@ -24,19 +24,22 @@ export class ApiSvcService {
       }
     })
     .pipe(map((data: any) => data.data.results), shareReplay())
-  }
+  };
 
 
   getCharacterByName(search:string): Observable<hero> {
     return this.http.get<any>(this.API + `characters?nameStartsWith=${search}&orderBy=name&ts=1&apikey=${this.publicKey}&hash=${this.hash}`).pipe(map((data: any) => data.data.results), shareReplay())
-  }
+  };
   getCharacter(id:string): Observable<hero> {
-    return this.http.get<any>(`https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=${this.publicKey}&hash=${this.hash}`, {
+    return this.http.get<any>(this.API + `characters/${id}?ts=1&apikey=${this.publicKey}&hash=${this.hash}`, {
       params: {
         id
       }
-    }).pipe(map((data: any) => data.data.results["0"], shareReplay()))
+    }).pipe(map((data: any) => data.data.results["0"]), shareReplay())
 
+  };
+    getCharacterT(id:string): Observable<hero> {
+    return this.http.get<any>(this.API + `characters/${id}?ts=1&apikey=${this.publicKey}&hash=${this.hash}`).pipe(map((data: any) => data.data.results["0"]))
   }
 
 }

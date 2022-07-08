@@ -3,11 +3,10 @@
   *ngIf="mostrar"
   header="Titulo del Toast"
 
-  [autohide]="false"
+  [autohide]="true"
   (hide)="mostrar=false">
   Ya has completado el máximo de 6 Super Héroes seleccionados.
   </ngb-toast>
-
 <div class="login-reg-panel ">
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -20,7 +19,7 @@
         </div>
         <label>
           <input type="text" id="search" required name="search" [(ngModel)]="searchText"  autocomplete="off" (keyup.enter)="updateSearch()">
-          <ul>
+          <ul class="list">
             <li b>b</li>
             <li u>u</li>
             <li s>s</li>
@@ -30,7 +29,7 @@
           </ul>
           </label>
           <div>
-            <button class="cybr-btn card-btn mx-2" (click)="updateSearch()">
+            <button class="cybr-btn card-btn m-1" (click)="updateSearch()">
               Filtrar en base de datos<span aria-hidden></span>
               <span aria-hidden class="cybr-btn__glitch">Filtrar</span>
               <span aria-hidden class="cybr-btn__tag">Kubide</span>
@@ -45,17 +44,51 @@
 </div>
 
 <ng-template #cookieWindow let-modal >
-  <div class="wrapper" >
+  <div class="row" >
+    <div *ngFor="let hero of myHeroTeam" class="col-sm rounded" >
+      <div class="rounded teamCard">
+        <img src={{hero.thumbnail.path}}.{{hero.thumbnail.extension}} class="img-team rounded-circle p-1" alt="heroe kubide" width="164px" height="164px">
+        <div class="fake-h" style="background-color: #ec1313;">{{hero.name}}</div>
+        <p>{{hero.description}}</p>
 
-    <div class="content">
-      <div><p>Los ID de tus heroes son: {{heroTeam}}.</p></div>
-      <div>
-        <button (click)="listHeros_localStorage()">guardar</button>
-        <button (click)="clear()">borrar</button>
       </div>
-          <button class="item w-100" style="height:6rem" (click)="windowTeam()">Volver</button>
-        </div>
+      <div class="btn-cardTeam">
+        <a type="button" appToScroll (click)="onSelect(hero.id)" class="btn btn-warning m-1">
+          <b>Mas Información</b>
+        </a>
       </div>
+      <div class="btn-cardTeam">
+        <a type="button" appToScroll (click)="deleteHero(hero.id)" class="btn btn-danger m-1">
+          <b>Borrar de la selección</b>
+        </a>
+      </div>
+    </div>
+  </div>
+      <div class="container row justify-content-end">
+        <button class="cybr-btn card-btn m-1 special-btn " (click)="saveHeros_localStorage()">
+          Guardar equipo<span aria-hidden></span>
+          <span aria-hidden class="cybr-btn__glitch">save data</span>
+          <span aria-hidden class="cybr-btn__tag">Kubide</span>
+        </button>
+        <button class="cybr-btn card-btn m-1 special-btn" (click)="chargeSaveTeam()">
+          Cargar guardado<span aria-hidden></span>
+          <span aria-hidden class="cybr-btn__glitch">save data</span>
+          <span aria-hidden class="cybr-btn__tag">Kubide</span>
+        </button>
+        <button class="cybr-btn card-btn m-1 special-btn" (click)="clear()">
+          borrar<span aria-hidden></span>
+          <span aria-hidden class="cybr-btn__glitch">_delete_</span>
+          <span aria-hidden class="cybr-btn__tag">Kubide</span>
+        </button>
+        <button class="cybr-btn card-btn m-1 special-btn" (click)="clearMin()">
+          Nueva seleción<span aria-hidden></span>
+          <span aria-hidden class="cybr-btn__glitch">_delete_</span>
+          <span aria-hidden class="cybr-btn__tag">Kubide</span>
+        </button>
+  </div>
+  <a type="button" appToScroll (click)="windowTeam()" class="btn btn-dark w-100 p-3">
+    <b style="font-size: x-large;">VOLVER</b>
+  </a>
 </ng-template>
 
 <router-outlet></router-outlet>
