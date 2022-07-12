@@ -60,9 +60,8 @@ export class CoreComponent implements OnInit, OnDestroy {
   }
 
   selectedHerosMenu() {
-    this.myHeroTeam = [];
-  this.toastService.show('Necesitas seleccionar al menos un Super Héroe', { classname: 'bg-danger text-light', delay: 5000 });
 
+    this.myHeroTeam = [];
     this.chargeSaveTeam();
     this.modalService.open(this.cookieWindow, {size: 'xl', backdropClass: 'light-blue-backdrop', windowClass: 'my-class'});
 
