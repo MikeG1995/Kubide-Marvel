@@ -1,12 +1,4 @@
 
-  <ngb-toast class="sticky-top toast"
-  *ngIf="mostrar"
-  header="Titulo del Toast"
-
-  [autohide]="true"
-  (hide)="mostrar=false">
-  Ya has completado el máximo de 6 Super Héroes seleccionados.
-  </ngb-toast>
 <div class="login-reg-panel ">
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -29,7 +21,7 @@
           </ul>
           </label>
           <div>
-            <button class="cybr-btn card-btn m-1" (click)="updateSearch()">
+            <button appToScroll class="cybr-btn card-btn m-1" (click)="updateSearch()">
               Filtrar en base de datos<span aria-hidden></span>
               <span aria-hidden class="cybr-btn__glitch">Filtrar</span>
               <span aria-hidden class="cybr-btn__tag">Kubide</span>
@@ -44,7 +36,12 @@
 </div>
 
 <ng-template #cookieWindow let-modal >
-  <div class="row" >
+      <h1 class="text-center">
+        <span style="background-color: #ec1313;">{{ titleTeam }}</span>
+
+    </h1>
+
+  <div class="row" style="min-height: 40vh;">
     <div *ngFor="let hero of myHeroTeam" class="col-sm rounded" >
       <div class="rounded teamCard">
         <img src={{hero.thumbnail.path}}.{{hero.thumbnail.extension}} class="img-team rounded-circle p-1" alt="heroe kubide" width="164px" height="164px">
@@ -64,14 +61,14 @@
       </div>
     </div>
   </div>
+  <div>
+    <input (keyup)="onKey($event)" placeholder="NOMBRA TU EQUIPO">
+  </div>
+  <div>
+  </div>
       <div class="container row justify-content-end">
         <button class="cybr-btn card-btn m-1 special-btn " (click)="saveHeros_localStorage()">
           Guardar equipo<span aria-hidden></span>
-          <span aria-hidden class="cybr-btn__glitch">save data</span>
-          <span aria-hidden class="cybr-btn__tag">Kubide</span>
-        </button>
-        <button class="cybr-btn card-btn m-1 special-btn" (click)="chargeSaveTeam()">
-          Cargar guardado<span aria-hidden></span>
           <span aria-hidden class="cybr-btn__glitch">save data</span>
           <span aria-hidden class="cybr-btn__tag">Kubide</span>
         </button>
@@ -80,16 +77,12 @@
           <span aria-hidden class="cybr-btn__glitch">_delete_</span>
           <span aria-hidden class="cybr-btn__tag">Kubide</span>
         </button>
-        <button class="cybr-btn card-btn m-1 special-btn" (click)="clearMin()">
-          Nueva seleción<span aria-hidden></span>
-          <span aria-hidden class="cybr-btn__glitch">_delete_</span>
-          <span aria-hidden class="cybr-btn__tag">Kubide</span>
-        </button>
   </div>
   <a type="button" appToScroll (click)="windowTeam()" class="btn btn-dark w-100 p-3">
     <b style="font-size: x-large;">VOLVER</b>
   </a>
 </ng-template>
+<div id="NavPosition"></div>
 
 <router-outlet></router-outlet>
 <div class="container">

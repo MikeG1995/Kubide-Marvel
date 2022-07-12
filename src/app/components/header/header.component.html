@@ -1,6 +1,8 @@
 <header #Altura style="height:100vh">
   <!-- Top slider single slide -->
   <div class="video-header">
+    <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+
     <div class="w-100 h-100 fake-bg position-absolute" *ngIf='this.browserName === ("safari"); else normal'>
     </div>
     <ng-template #normal class="bg-dark">
@@ -30,4 +32,3 @@
       <!-- / Top slider single slide -->
 <app-navbar></app-navbar>
 </header>
-<div id="NavPosition"></div>

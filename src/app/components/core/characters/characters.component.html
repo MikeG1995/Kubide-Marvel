@@ -1,14 +1,15 @@
 <!-- Latest property -->
+
 <section style="min-height: 100vh;" my-5>
   <div class="container-lg">
     <div class="aa-latest-property-area">
       <div class="aa-latest-properties-content">
-        <ul class="row w-100">
+        <ul class="row w-100"   style="min-height:100vh ;">
               <ng-container  class="px-sm-0 ">
-                <li *ngFor="let Charact of allCharacters$ | async " class="col-md-4 " let page=0>
+                <li *ngFor="let Charact of allCharacters$ | async " class="col-md-4" let page=0>
               <article class="aa-properties-item">
                 <div class="propierties-pic"  style="overflow: hidden;">
-                  <a (click)="onSelect(Charact.id)" style="display: flex; justify-content: center;" class="aa-properties-item-img">
+                  <a appToScroll (click)="onSelect(Charact.id)" style="display: flex; justify-content: center;" class="aa-properties-item-img">
                     <img loading="lazy" src={{Charact.thumbnail.path}}.{{Charact.thumbnail.extension}} alt="kubide heroes selector">
                   </a>
 
@@ -19,7 +20,7 @@
                     <span aria-hidden class="cybr-btn__glitch">Héroe</span>
                     <span aria-hidden class="cybr-btn__tag">Kubide</span>
                   </button>
-                  <button class="cybr-btn card-btn mx-2" (click)="onSelect(Charact.id)">
+                  <button appToScroll class="cybr-btn card-btn mx-2" (click)="onSelect(Charact.id)">
                     Detalles<span aria-hidden></span>
                     <span aria-hidden class="cybr-btn__glitch">Detalles_</span>
                     <span aria-hidden class="cybr-btn__tag">Kubide</span>
@@ -36,7 +37,7 @@
               </ng-container>
         </ul>
       </div>
-      <div class="container row">
+      <div class="container row" >
         <button type="button" appToScroll (click)="prev()" class="btn btn-dark w-100 p-3 col m-2">
           <b style="font-size: x-large;">ANTERIOR</b>
         </button>

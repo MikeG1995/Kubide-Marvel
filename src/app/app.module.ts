@@ -15,7 +15,8 @@ import { SearchComponent } from './components/core/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { ApiSvcService } from './services/api-svc.service';
-import { ToastsContainer } from './services/toast/toast-container.component';
+import { ToScrollDirective } from './directives/to-scroll.directive';
+import { ToastsContainer } from './shared/toast/toasts-container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { ToastsContainer } from './services/toast/toast-container.component';
     CharactersComponent,
     DetailCharactComponent,
     SearchComponent,
-    ToastsContainer
+    ToastsContainer,
+    ToScrollDirective
 
   ],
   imports: [

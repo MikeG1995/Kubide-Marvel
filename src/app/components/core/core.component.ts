@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal, NgbToast } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SharedService } from 'src/app/services/shared-service';
-import { ToastService } from 'src/app/services/toast/toast-service';
+import { ToastService } from 'src/app/shared/toast/toast-service';
 import { ApiSvcService } from 'src/app/services/api-svc.service';
 
 @Component({
@@ -12,9 +12,9 @@ import { ApiSvcService } from 'src/app/services/api-svc.service';
   encapsulation: ViewEncapsulation.None,
 
 
-  providers: [NgbToast, SharedService],
+  providers: [SharedService],
 })
-export class CoreComponent implements OnInit {
+export class CoreComponent implements OnInit, OnDestroy {
   searchText: any = '';
   closeResult = '';
   @ViewChild('cookieWindow', { static: true }) public cookieWindow: any;
@@ -26,97 +26,107 @@ export class CoreComponent implements OnInit {
     private modalService: NgbModal,
     private apiSvcService: ApiSvcService
   ) {
-    _sharedService.changeEmitted$.subscribe((text) => {
-      if (this.heroTeamProvisional.length < 6) {
-        this.heroTeamProvisional.push(text);
-        this.heroTeam.length = 0;
-      } else {
-        this.mostrar = true;
-      }
-    });
+
+
   }
   heroTeam: string[] = [];
-  heroTeamProvisional: string[] = [];
   myHeroTeam: any[] = [];
-  mostrar: boolean = false;
+  titleTeam: String = "Nombra tu equipo";
   ngOnInit(): void {
 
     if (
       JSON.parse(localStorage.getItem('TEAM_SELECTION')) != JSON.parse('null')
     )
-      this.heroTeam = JSON.parse(localStorage.getItem('TEAM_SELECTION'));
-      this.chargeSaveTeam()
-  }
+      {
+        this.heroTeam = JSON.parse(localStorage.getItem('TEAM_SELECTION'));
+        this.chargeSaveTeam()
+      };
+      if (
+        JSON.parse(localStorage.getItem('TEAM_NAME')) != JSON.parse('null')
+      ) {
+        this.titleTeam = JSON.parse(localStorage.getItem('TEAM_NAME'));
+      }
 
+  }
+  ngOnDestroy(): void {
+    this.toastService.clear();
+  }
+  onKey(event) {
+    const inputValue = event.target.value;
+    this.titleTeam = inputValue
+}
   updateSearch() {
     this.router.navigate(['search/', this.searchText]);
   }
 
   selectedHerosMenu() {
-    this.chargeCurrentTeam();
+    this.myHeroTeam = [];
+  this.toastService.show('Necesitas seleccionar al menos un Super Héroe', { classname: 'bg-danger text-light', delay: 5000 });
+
+    this.chargeSaveTeam();
     this.modalService.open(this.cookieWindow, {size: 'xl', backdropClass: 'light-blue-backdrop', windowClass: 'my-class'});
+
+
 
   }
 
   saveHeros_localStorage() {
-    this.heroTeam = this.heroTeamProvisional
-    let idHero = this.heroTeam;
-    localStorage.setItem('TEAM_SELECTION', JSON.stringify(idHero));
+    if (this.titleTeam != "Nombra tu equipo") {
+      localStorage.setItem('TEAM_NAME', JSON.stringify(this.titleTeam))
+      this.toastService.show('Guardado', { classname: 'bg-success text-light', delay: 3000 });
+
   }
+
+  }
+
   deleteHero(id) {
-    if (this.heroTeamProvisional != [] )
-    this.heroTeamProvisional.forEach((value,index)=>{
-        if(value == id) this.heroTeamProvisional.splice(index,1);
-      });
-    if (this.heroTeam != [] ) {
+
       const array = JSON.parse(localStorage.getItem("TEAM_SELECTION"));
       const filtered = array.filter(item => item !== (id));
-      localStorage.setItem("TEAM_SELECTION", JSON.stringify(filtered));
-      };
+      localStorage.setItem("TEAM_SELECTION", JSON.stringify(filtered))
       this.modalService.dismissAll(this.cookieWindow);
+      this.toastService.show('Héroe borrado');
 
-
-}
-clearMin() {
-  this.heroTeamProvisional  = [];
-  this.modalService.dismissAll(this.cookieWindow);
-
-}
-  clear() {
-    localStorage.removeItem('TEAM_SELECTION');
-    this.modalService.dismissAll(this.cookieWindow);
-    this.heroTeam.length = 0;
-    this.myHeroTeam.length = 0;
-    this.heroTeamProvisional  = [];
-    }
-
+  }
 
   windowTeam() {
     this.modalService.dismissAll(this.cookieWindow);
   }
+  clear() {
+    localStorage.removeItem('TEAM_SELECTION');
+    localStorage.removeItem('TEAM_NAME');
+    this.modalService.dismissAll(this.cookieWindow);
+    this.titleTeam ="Nombra tu equipo";
+    this.myHeroTeam = []
+        this.toastService.show('Equipo eliminado');
+
+    }
+
   chargeSaveTeam() {
-      this.myHeroTeam = [];
+    this.heroTeam = JSON.parse(localStorage.getItem("TEAM_SELECTION"));
     this.heroTeam.map((data) => {
       this.apiSvcService.getCharacter(data).subscribe((heroe) => {
         this.myHeroTeam.push(heroe)
       });
-    });
-
-  }
-  onSelect(charact:string){
+    })
+}
+onSelect(charact:string){
     this.router.navigate(['character/', charact]);
     this.modalService.dismissAll(this.cookieWindow);
-  }
-
-  chargeCurrentTeam() {
-    if (this.heroTeamProvisional.length > 0) {
-      this.myHeroTeam = []
-    };
-    this.heroTeamProvisional.map((data) => {
-      this.apiSvcService.getCharacter(data).subscribe((heroe) => {
-        this.myHeroTeam.push(heroe)
-      });
-    });
 
   }
+
+
+  showStandard() {
+    this.toastService.show('I am a standard toast');
+  }
+
+  showSuccess() {
+    this.toastService.show('I am a success toast', { classname: 'bg-success text-light', delay: 10000 });
+  }
+
+  showDanger(dangerTpl) {
+    this.toastService.show(dangerTpl, { classname: 'bg-danger text-light', delay: 15000 });
+  }
+
 }

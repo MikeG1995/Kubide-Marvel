@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map, Observable } from 'rxjs';
+import { ToastService } from 'src/app/shared/toast/toast-service';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +16,8 @@ export class SearchComponent implements OnInit {
 
 
   constructor(
-    private route: ActivatedRoute, private router:Router,    private modalService: NgbModal
+    private route: ActivatedRoute, private router:Router,    private modalService: NgbModal,     public toastService: ToastService,
+
 
      ) {}
 
@@ -37,10 +39,30 @@ export class SearchComponent implements OnInit {
     }
 
     cambiar(clickdata) {
-      console.log(clickdata)
-    }
+      const charactersFav = JSON.parse(localStorage.getItem("TEAM_SELECTION"));
 
-      onSelect(charact:string){
+        if ( charactersFav == null ) {
+          localStorage.setItem(
+            "TEAM_SELECTION",
+            JSON.stringify([clickdata])
+          )
+        } else {
+          if (charactersFav.length < 6) {
+            localStorage.setItem(
+              "TEAM_SELECTION",
+              JSON.stringify([...charactersFav, clickdata])
+            )
+            this.toastService.show('Heroe añadido', { classname: 'bg-success text-light', delay: 2000 });
+
+          } else {
+            this.toastService.show('Ya has completado 6 heroes', { classname: 'bg-danger text-light', delay: 5000 });
+          }
+          }
+
+
+
+       }
+        onSelect(charact:string){
     this.router.navigate(['character/', charact]);
   }
 

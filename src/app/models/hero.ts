@@ -24,6 +24,7 @@ export interface hero {
     items:[{
       name:string
     }]
-  }
+  },
+  isFavorite?: boolean;
 }
 

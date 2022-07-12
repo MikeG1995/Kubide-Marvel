@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef , Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef , Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { NavigationEnd, ActivatedRoute, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
 
 
-  constructor( private router: Router ) { }
+  constructor( private router: Router) { }
   browserName = '';
   browserVersion = '';
   title: string = "Buscador de héroes By Kubide";
@@ -36,6 +36,8 @@ export class HeaderComponent implements OnInit {
         filter(event => event instanceof NavigationEnd),
       )
 }
+
+
     detectBrowserName() {
 
     const agent = window.navigator.userAgent.toLowerCase()
@@ -56,4 +58,5 @@ export class HeaderComponent implements OnInit {
         return 'other';
     }
   }
+
 }
