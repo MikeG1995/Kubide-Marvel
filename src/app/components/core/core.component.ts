@@ -52,7 +52,6 @@ export class CoreComponent implements OnInit, OnDestroy {
 
     this.chargeSaveTeam()
         this.modalService.open(this.cookieWindow, {size: 'xl', backdropClass: 'light-blue-backdrop', windowClass: 'my-class'});
-    this.toastService.show('Guardado', { classname: 'bg-success text-light', delay: 3000 });
 
 
   }
