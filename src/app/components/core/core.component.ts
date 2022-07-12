@@ -10,9 +10,7 @@ import { ApiSvcService } from 'src/app/services/api-svc.service';
   templateUrl: './core.component.html',
   styleUrls: ['./core.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
-
-  providers: [SharedService],
+  providers: [SharedService]
 })
 export class CoreComponent implements OnInit, OnDestroy {
   searchText: any = '';
@@ -33,20 +31,11 @@ export class CoreComponent implements OnInit, OnDestroy {
   myHeroTeam: any[] = [];
   titleTeam: String = "Nombra tu equipo";
   ngOnInit(): void {
-
-    if (
-      JSON.parse(localStorage.getItem('TEAM_SELECTION')) != JSON.parse('null')
-    )
-      {
-        this.heroTeam = JSON.parse(localStorage.getItem('TEAM_SELECTION'));
-        this.chargeSaveTeam()
-      };
       if (
         JSON.parse(localStorage.getItem('TEAM_NAME')) != JSON.parse('null')
       ) {
         this.titleTeam = JSON.parse(localStorage.getItem('TEAM_NAME'));
       }
-
   }
   ngOnDestroy(): void {
     this.toastService.clear();
@@ -61,10 +50,9 @@ export class CoreComponent implements OnInit, OnDestroy {
 
   selectedHerosMenu() {
 
-    this.myHeroTeam = [];
-    this.chargeSaveTeam();
-    this.modalService.open(this.cookieWindow, {size: 'xl', backdropClass: 'light-blue-backdrop', windowClass: 'my-class'});
-
+    this.chargeSaveTeam()
+        this.modalService.open(this.cookieWindow, {size: 'xl', backdropClass: 'light-blue-backdrop', windowClass: 'my-class'});
+    this.toastService.show('Guardado', { classname: 'bg-success text-light', delay: 3000 });
 
 
   }
@@ -98,16 +86,26 @@ export class CoreComponent implements OnInit, OnDestroy {
     this.titleTeam ="Nombra tu equipo";
     this.myHeroTeam = []
         this.toastService.show('Equipo eliminado');
-
     }
 
   chargeSaveTeam() {
-    this.heroTeam = JSON.parse(localStorage.getItem("TEAM_SELECTION"));
-    this.heroTeam.map((data) => {
-      this.apiSvcService.getCharacter(data).subscribe((heroe) => {
-        this.myHeroTeam.push(heroe)
-      });
-    })
+    this.myHeroTeam = []
+
+    if (
+      JSON.parse(localStorage.getItem('TEAM_SELECTION')) != JSON.parse('null')
+    )
+      {
+        this.heroTeam = JSON.parse(localStorage.getItem("TEAM_SELECTION"));
+        this.heroTeam.map((data) => {
+          this.apiSvcService.getCharacter(data).subscribe((heroe) => {
+            this.myHeroTeam.push(heroe)
+          });
+        })
+          };
+    if (this.heroTeam === null) {
+      console.log("conditional");
+      this.toastService.show('Debes seleccionar un heroe', { classname: 'bg-danger text-light', delay: 3000 });
+    }
 }
 onSelect(charact:string){
     this.router.navigate(['character/', charact]);
