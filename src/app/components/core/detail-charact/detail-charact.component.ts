@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { hero } from 'src/app/models/hero';
 import { ToastService } from 'src/app/shared/toast/toast-service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-detail-charact',
@@ -12,7 +13,7 @@ import { ToastService } from 'src/app/shared/toast/toast-service';
 export class DetailCharactComponent implements OnInit {
 
   characterId$: Observable<hero>;
-  constructor(private route: ActivatedRoute,     public toastService: ToastService,
+  constructor(private route: ActivatedRoute,     public toastService: ToastService,private _location: Location
     ) { }
   @Output() cambio = new EventEmitter();
 
@@ -46,5 +47,8 @@ export class DetailCharactComponent implements OnInit {
 
 
      }
+     toBack(){
+      this._location.back()
 
+     }
 }

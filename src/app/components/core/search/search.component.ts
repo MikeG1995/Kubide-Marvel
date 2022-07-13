@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
 
 
      ) {}
+     searchQ: boolean = false;
 
      allCharacters$: Observable<any>;
 

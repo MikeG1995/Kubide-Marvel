@@ -37,7 +37,7 @@
               </ng-container>
         </ul>
       </div>
-      <div class="container row" >
+      <div class="container row m-0" *ngIf="searchQ === true; else search">
         <button type="button" appToScroll (click)="prev()" class="btn btn-dark w-100 p-3 col m-2">
           <b style="font-size: x-large;">ANTERIOR</b>
         </button>
@@ -45,6 +45,15 @@
           <b style="font-size: x-large;">VER MAS</b>
         </button>
       </div>
+      <ng-template #search >
+        <div class="container d-flex justify-content-end m-3 w-100">
+          <button type="button" appToScroll [routerLink]="['/']" class="btn btn-danger">
+            <b style="font-size: x-large;">Volver</b>
+          </button>
+
+
+        </div>
+      </ng-template>
 
     </div>
   </div>

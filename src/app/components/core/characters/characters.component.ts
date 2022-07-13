@@ -26,7 +26,7 @@ export class CharactersComponent implements OnInit {
   ) {}
 
   closeModal: string;
-
+    searchQ: boolean = true;
   allCharacters$: Observable<any>;
   public page:number = 0;
 
@@ -62,8 +62,6 @@ export class CharactersComponent implements OnInit {
   }
   getAllCharactersPage(page) {
     this.allCharacters$ = this.characterSvc.getAllCharactersPage(page);
-    console.log(this.allCharacters$);
-    this.allCharacters$.subscribe(data => { console.log(data)})
   }
   next() {
     console.log("next");
